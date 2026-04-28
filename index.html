@@ -2,13 +2,15 @@
 <html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
+    <meta charset="utf-8">
     <title>Training Tracker</title>
 </head>
 
 <body>
 <h1>Training Tracker</h1>
 
-<form>
+<h2>Add Exercise</h2>
+<form id="addExercise">
 
     <label for="ex">Exercise: </label>
     <input id="ex" type="text" name="ex"><br>
@@ -19,11 +21,12 @@
     <label for="rep">Reps: </label>
     <input id="rep" name="rep" type="number"><br>
 
-    <input type="submit" value="ADD">
+    <input id="add" type="submit" value="ADD">
 
 </form>
-<ul>
-    <li>test</li>
+<h2>Workout</h2>
+<ul id="workout">
+
 </ul>
 
 
