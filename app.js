@@ -11,8 +11,27 @@ function appendExercise() {
     li.appendChild(textLi);
     document.getElementById("workout").appendChild(li);
 
+
 }
 
+function saveWorkout(){
+    let objStr = JSON.stringify(workout);
+    localStorage.setItem("workout", objStr);
+}
+
+function loadWorkout() {
+    workout= JSON.parse(localStorage.getItem("workout")) || [];
+    for (let entry of workout) {
+        const li = document.createElement("li");
+        const textLi = document.createTextNode(`${workout[entry].exercise} 
+            - Sets: ${workout[entry].sets}
+            - Reps: ${workout[entry].reps}`);
+        li.appendChild(textLi)
+        document.getElementById("workout").appendChild(li);
+    }
+
+
+}
 
 
 addButton.addEventListener("submit", function (event) {
@@ -23,6 +42,7 @@ addButton.addEventListener("submit", function (event) {
         workout.push({exercise: exercise.value, sets: parseInt(sets.value), reps: parseInt(reps.value)})
         console.log(workout)
         appendExercise();
+        saveWorkout();
         exercise.value = "";
         sets.value = "";
         reps.value = "";
@@ -31,7 +51,15 @@ addButton.addEventListener("submit", function (event) {
 
 })
 
+addButton.addEventListener("reset", function (event){
+    event.preventDefault();
+    localStorage.clear()
+    location.reload();
+
+})
+
 
 
 
 console.log("JS.loaded")
+loadWorkout();
