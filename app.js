@@ -16,10 +16,18 @@ function appendExercise() {
 
 
 addButton.addEventListener("submit", function (event) {
-    workout.push({exercise: exercise.value, sets: parseInt(sets.value), reps: parseInt(reps.value)})
-    console.log(workout)
-    appendExercise();
     event.preventDefault();
+    if (exercise.value === "" || sets.value === "" || reps.value === "") {
+        alert("Please fill out all Fields")
+    } else {
+        workout.push({exercise: exercise.value, sets: parseInt(sets.value), reps: parseInt(reps.value)})
+        console.log(workout)
+        appendExercise();
+        exercise.value = "";
+        sets.value = "";
+        reps.value = "";
+    }
+
 
 })
 
